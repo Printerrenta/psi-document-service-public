@@ -1,0 +1,323 @@
+{
+  "schemaVersion": 1,
+  "sourceRepository": "Printerrenta/psi-document-service",
+  "sourceCommit": "31338c704a509a6d66b0fe511665e49cf072cd55",
+  "sourceBranch": "main",
+  "history": "Independent public snapshots; no private Git history",
+  "files": [
+    {
+      "path": ".dockerignore",
+      "sha256": "468f4a2974ffcb75eb4e8d9a1c02ac254e208327e2751a8d2925a79db175f4fc"
+    },
+    {
+      "path": ".github/workflows/public-safety.yml",
+      "sha256": "b2496e36f4d1ef71234ffe5b349a9c449a8f45c575de594b23a41ddb3badebf7"
+    },
+    {
+      "path": ".github/workflows/verify.yml",
+      "sha256": "ce0caacd0eedc702029e6a68d53507f1b886ac06b59e56bebeb12259b203d4e0"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "d1982c33f2569ecce13df2be7755938cf07ca2b4ba385409d1aeda80da9794c4"
+    },
+    {
+      "path": ".mvn/wrapper/maven-wrapper.properties",
+      "sha256": "8f2a4438810348270d9d98f8d6d530541ddb7271e373db207e8ac381e0e35b62"
+    },
+    {
+      "path": "Dockerfile",
+      "sha256": "5f58f1c2b83d3b28f76d232fa06a30d3f0979999788f8e8e9233285f635b7dbd"
+    },
+    {
+      "path": "README.md",
+      "sha256": "2036b5ef1684b1bc73f1c7c623aada67f11ead06364bb4c7f17104fca4b90f57"
+    },
+    {
+      "path": "mvnw",
+      "sha256": "cae96cef89ebea3531221f4ae17c23cf8edf67d00eae8306d4186ae1bbed4d02"
+    },
+    {
+      "path": "mvnw.cmd",
+      "sha256": "4a361e1374a3e5ad6d03e18e9adc0cf181ac5058ac6203b76f0ba3b456b56481"
+    },
+    {
+      "path": "package.json",
+      "sha256": "bc6f65614b45913e73ec6c64e1adffc067b62f0fc900e708cd276529f877bee4"
+    },
+    {
+      "path": "pom.xml",
+      "sha256": "86fe8f70e400c51ad47dbaf21f210b509c229da9181c01953b9d781a4b8fb849"
+    },
+    {
+      "path": "scripts/build.mjs",
+      "sha256": "5a344ccaa4510752234842e191217a9e549c66b40f938096b79e82fb775c6980"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/DocumentServiceApplication.java",
+      "sha256": "0aa58a51513a6900bf05e53f1380429510774519babd75746c08f37aaf74d5d6"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/HelloController.java",
+      "sha256": "3eca0a6fd86300a4267aa80648b2e420a192a3db4f63a58c5591389c016810ec"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/auth/AppUser.java",
+      "sha256": "55a11a06cc6bffe0419053948110e8bfdcabbf2d76cb549e2d8846143fdd6ebb"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/auth/CallerToken.java",
+      "sha256": "957163e987f4fff47542a53d1a1260f19ff0685fd636fd18c41552247c5623c9"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/auth/CurrentUser.java",
+      "sha256": "b427512082ff59d531521e0e06f8ba01bec5d64cf90d6a880f0244d461dd26ff"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/auth/HttpUserIdentityResolver.java",
+      "sha256": "92788e58bcc340308faa75e04fc9570905447a5b3588d78692b6e025e9332c53"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/auth/NeonJwtDecoder.java",
+      "sha256": "0224e4168273d8fee61fbcb1d1ce9d3dc1c15f230ddef1112397ee6e13c68605"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/auth/RemoteJwksSigningKeyProvider.java",
+      "sha256": "af185042a79156d5569a8196d17a61b169ec111c5a27531c90675c8e2671ec5f"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/auth/SecurityConfiguration.java",
+      "sha256": "4baa4bef0df3a2d2677dedf3bdea04c9f9b8a536f023806b8bfbac68e710647b"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/auth/SigningKeyProvider.java",
+      "sha256": "7cd2070eac244309dea3ffab1e5dd311b8831bc2dea10d92199b2ffb5e1690bb"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/auth/SpringSecurityCallerToken.java",
+      "sha256": "e71af9e9e782e9a7f40ead8869e4bc955897a69299e00936e29b098bd461e068"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/auth/SpringSecurityCurrentUser.java",
+      "sha256": "bea618a9e724a57ab1dcd9495721e5e71701aded66e69ff47a8ff9b37c1e0c37"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/auth/UserIdentityResolver.java",
+      "sha256": "eb6db6f36a7e6c46d9afdf7e97c0944f6de05512e90c0c14881a48915f91276f"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/auth/UserJwtAuthenticationConverter.java",
+      "sha256": "e2581abdd25e5d485c39e7ffebd1e03500328534ba95a21b2d5bbf1eaa1cf3ec"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/auth/UserRole.java",
+      "sha256": "4585c570da0fecfd6ba62aea85d6c5884f0bfc0879a6a43eebf41ff0be36c80a"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/configuration/RuntimeConfiguration.java",
+      "sha256": "7593d24e01b3c3ecb366de884c34e9c326cd28babd785b166a451b93c6dc74bf"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/health/HealthController.java",
+      "sha256": "b9ab9382d55136425181d2adc7895a21fc5e1bc2ca1016d5205857c86881d9e3"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/neon/NeonEnvironmentPostProcessor.java",
+      "sha256": "8a78503c81d4eee8f2dd1f6dff2f15afa5e244d549f91e4b19cf32ee05633b7a"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/storage/AttachmentNotFoundException.java",
+      "sha256": "aff9e09cdf27fdd7fe79d5166e8e07b4dcf4dcf6cb904040c98660c6eea192a2"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/storage/AttachmentUpload.java",
+      "sha256": "f76c49dd0951cbfb777e2cc3602a92edfce2676e97238f3fcb28d7c7ae619b6a"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/storage/ContractAccess.java",
+      "sha256": "d482d80bcd232062cc8428932e5035577e0dc89853448c515f6580aad1cbfe05"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/storage/ContractAttachment.java",
+      "sha256": "688201b7d68faf68c9934f2bf1d55e538dbd41a5e38fc9d3de7db997898e2831"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/storage/ContractAttachmentController.java",
+      "sha256": "13be4bb4c78e185cd2bf3be1d772b79056c2d600dff2c83ac1204f7a165b3be4"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/storage/ContractAttachmentRepository.java",
+      "sha256": "469a45e1aa56b7acc595d3997856a12045e2e40970b741cfbb8f5b8c4a2a0979"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/storage/ContractAttachmentService.java",
+      "sha256": "2c24eeb3817dc95809988f307a2667b24e93ae806888d43835de8c39e9a7f2cb"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/storage/HttpContractAccess.java",
+      "sha256": "d1f58eb34a20f11392efcaf4557dfe0aad26359899c85ed147e244f9cf5e4f61"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/storage/ObjectStorage.java",
+      "sha256": "c20f2304262bd0b8673f2e2e3d2f47d2c451ef9fdf64a1b3e352bbe41d678e65"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/storage/S3ObjectStorage.java",
+      "sha256": "fa797eef8c681a33a3bf038299ab05ac25e3bdef431f6db30f89edf8e38f851a"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/storage/StorageConfiguration.java",
+      "sha256": "dbdb0acae8ccc475ed7049bfeda9f369f92334bf8c5b5466220ab876213fdb25"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/storage/StorageExceptionHandler.java",
+      "sha256": "38b166bbd86168bd96976f094659b03309a8af508aa032c76d938081ea5be586"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/storage/StorageUnavailableException.java",
+      "sha256": "adebaab96e91c4a0e8c699d9ecd8917cc90bc1240754b36cfc6e7e2ec7e13af8"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/transport/MetadataServiceCredentials.java",
+      "sha256": "9c7f5e5a9990ef08805ca344091fb446b6766283510743b75cbc0069d712a562"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/transport/ServiceCredentials.java",
+      "sha256": "dfdfc67998564ef5d8d179320844fdc3496ea6d224959cc2b8e92714bd9658a2"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/transport/ServiceHttpClient.java",
+      "sha256": "1b75f43e78061c79fccab2c39fbfbca7f464dcbebd773a57d0ee6e4b203f13b6"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/transport/TransportExceptionHandler.java",
+      "sha256": "a4b936df90bdaacdb59233b8d4fe6e8218b13b6a31869baa90c6edab964c138e"
+    },
+    {
+      "path": "src/main/java/lt/printerrental/transport/UpstreamUnavailableException.java",
+      "sha256": "ae430832030b4f71fde5e83cf9e97a806b04a899c461c696db9d573a133f22bd"
+    },
+    {
+      "path": "src/main/resources/META-INF/spring.factories",
+      "sha256": "b74a889899c32837022ca14be20924987e6f7c198bf46a2cdb3abfbcf203e491"
+    },
+    {
+      "path": "src/main/resources/application.properties",
+      "sha256": "009c508a42d671d532e2fd1ee56b15783787b5e6f06700e50e8dbdf11dcdecc0"
+    },
+    {
+      "path": "src/main/resources/db/migration/V1__attachments.sql",
+      "sha256": "1e71d3fc153db7435adc1b88caba698518302d793228e81cbc55fa89190208f8"
+    },
+    {
+      "path": "src/test/java/lt/printerrental/architecture/ServiceArchitectureTest.java",
+      "sha256": "3500b81f077af7c2fd6b8a8b107fb0ac74266393631a479c8f754b0abcc9ce35"
+    },
+    {
+      "path": "src/test/java/lt/printerrental/auth/NeonJwtDecoderTest.java",
+      "sha256": "87cacb8fde237ce9f0dec839b512b8bda3dc8e52aeda55fe376761d871adbd4e"
+    },
+    {
+      "path": "src/test/java/lt/printerrental/auth/ServiceSecurityTest.java",
+      "sha256": "8bb94f5042add5ef36dfeb0c63ce5387db5db2e457f6ae2805e325ebaac42fa8"
+    },
+    {
+      "path": "src/test/java/lt/printerrental/auth/UserJwtAuthenticationConverterTest.java",
+      "sha256": "55ef3a03d014df1e7e9d124f57c7e8881634d4bf1c0dc7f088d5e2c83d70c8e3"
+    },
+    {
+      "path": "src/test/java/lt/printerrental/neon/NeonEnvironmentPostProcessorTest.java",
+      "sha256": "cae352ed2a1ed1347e82baffb11ae3a07939c6980bdef663f64b499991da9ea8"
+    },
+    {
+      "path": "src/test/java/lt/printerrental/storage/AttachmentUploadTest.java",
+      "sha256": "0ffb559eeb7b226713bcbe8858b14c96d7a32638647a64d35f27af60d17f02b0"
+    },
+    {
+      "path": "src/test/java/lt/printerrental/storage/ContractAttachmentServiceTest.java",
+      "sha256": "5838cd81bfce274646ba2890d4b00341f20a65a4cec0abd45c852c2851f770c8"
+    },
+    {
+      "path": "src/test/java/lt/printerrental/storage/HttpContractAccessTest.java",
+      "sha256": "1b4baee42825a74ea14d72e0a4abca66bb0e5273514e971abfaeede8a4cd549e"
+    },
+    {
+      "path": "src/test/java/lt/printerrental/storage/S3ObjectStorageTest.java",
+      "sha256": "f21a867fa16f980a3a440db98305fc93d39767725ee9ec9f8925dcbfef451241"
+    },
+    {
+      "path": "src/test/java/lt/printerrental/transport/ServiceHttpClientTest.java",
+      "sha256": "0e87e2f5a3ea06748ada0d8f526e8f2b0d29895a90fc89b8535bef1fa6de4a4f"
+    }
+  ],
+  "byteIdenticalSourceFiles": [
+    ".dockerignore",
+    ".gitignore",
+    ".mvn/wrapper/maven-wrapper.properties",
+    "Dockerfile",
+    "mvnw",
+    "mvnw.cmd",
+    "package.json",
+    "pom.xml",
+    "scripts/build.mjs",
+    "src/main/java/lt/printerrental/DocumentServiceApplication.java",
+    "src/main/java/lt/printerrental/HelloController.java",
+    "src/main/java/lt/printerrental/auth/AppUser.java",
+    "src/main/java/lt/printerrental/auth/CallerToken.java",
+    "src/main/java/lt/printerrental/auth/CurrentUser.java",
+    "src/main/java/lt/printerrental/auth/HttpUserIdentityResolver.java",
+    "src/main/java/lt/printerrental/auth/NeonJwtDecoder.java",
+    "src/main/java/lt/printerrental/auth/RemoteJwksSigningKeyProvider.java",
+    "src/main/java/lt/printerrental/auth/SecurityConfiguration.java",
+    "src/main/java/lt/printerrental/auth/SigningKeyProvider.java",
+    "src/main/java/lt/printerrental/auth/SpringSecurityCallerToken.java",
+    "src/main/java/lt/printerrental/auth/SpringSecurityCurrentUser.java",
+    "src/main/java/lt/printerrental/auth/UserIdentityResolver.java",
+    "src/main/java/lt/printerrental/auth/UserJwtAuthenticationConverter.java",
+    "src/main/java/lt/printerrental/auth/UserRole.java",
+    "src/main/java/lt/printerrental/configuration/RuntimeConfiguration.java",
+    "src/main/java/lt/printerrental/health/HealthController.java",
+    "src/main/java/lt/printerrental/neon/NeonEnvironmentPostProcessor.java",
+    "src/main/java/lt/printerrental/storage/AttachmentNotFoundException.java",
+    "src/main/java/lt/printerrental/storage/AttachmentUpload.java",
+    "src/main/java/lt/printerrental/storage/ContractAccess.java",
+    "src/main/java/lt/printerrental/storage/ContractAttachment.java",
+    "src/main/java/lt/printerrental/storage/ContractAttachmentController.java",
+    "src/main/java/lt/printerrental/storage/ContractAttachmentRepository.java",
+    "src/main/java/lt/printerrental/storage/ContractAttachmentService.java",
+    "src/main/java/lt/printerrental/storage/HttpContractAccess.java",
+    "src/main/java/lt/printerrental/storage/ObjectStorage.java",
+    "src/main/java/lt/printerrental/storage/S3ObjectStorage.java",
+    "src/main/java/lt/printerrental/storage/StorageConfiguration.java",
+    "src/main/java/lt/printerrental/storage/StorageExceptionHandler.java",
+    "src/main/java/lt/printerrental/storage/StorageUnavailableException.java",
+    "src/main/java/lt/printerrental/transport/MetadataServiceCredentials.java",
+    "src/main/java/lt/printerrental/transport/ServiceCredentials.java",
+    "src/main/java/lt/printerrental/transport/ServiceHttpClient.java",
+    "src/main/java/lt/printerrental/transport/TransportExceptionHandler.java",
+    "src/main/java/lt/printerrental/transport/UpstreamUnavailableException.java",
+    "src/main/resources/META-INF/spring.factories",
+    "src/main/resources/application.properties",
+    "src/main/resources/db/migration/V1__attachments.sql",
+    "src/test/java/lt/printerrental/architecture/ServiceArchitectureTest.java",
+    "src/test/java/lt/printerrental/auth/NeonJwtDecoderTest.java",
+    "src/test/java/lt/printerrental/auth/ServiceSecurityTest.java",
+    "src/test/java/lt/printerrental/auth/UserJwtAuthenticationConverterTest.java",
+    "src/test/java/lt/printerrental/neon/NeonEnvironmentPostProcessorTest.java",
+    "src/test/java/lt/printerrental/storage/AttachmentUploadTest.java",
+    "src/test/java/lt/printerrental/storage/ContractAttachmentServiceTest.java",
+    "src/test/java/lt/printerrental/storage/HttpContractAccessTest.java",
+    "src/test/java/lt/printerrental/storage/S3ObjectStorageTest.java",
+    "src/test/java/lt/printerrental/transport/ServiceHttpClientTest.java"
+  ],
+  "executableFiles": [
+    "mvnw"
+  ],
+  "omittedCategories": [
+    "production deployment settings",
+    "private release evidence",
+    "credentials",
+    "private Git history",
+    "publisher credentials and workflow"
+  ]
+}

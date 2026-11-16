@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "sourceRepository": "Printerrenta/psi-document-service",
-  "sourceCommit": "5bf903712cee753f74b42aa1ae10458ac3872ab5",
+  "sourceCommit": "1ba42a8aa6ddd83a9e048719f3a31dcec298f631",
   "sourceBranch": "main",
   "history": "Independent public snapshots; no private Git history",
   "files": [
@@ -31,7 +31,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "0c2931bbec673ff3c418fc99c538288e5b701b908d2ce605dfe27620d57045a8"
+      "sha256": "765461600d435f33d9249aba89877d7f9dc9c83c277f8a685a6b9f58ad358228"
     },
     {
       "path": "mvnw",

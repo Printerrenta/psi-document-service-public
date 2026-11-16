@@ -8,6 +8,17 @@ have separate PostgreSQL databases and restricted credentials; the gateway has n
 Controllers delegate use cases, domain objects enforce invariants, and HTTP/JDBC/JPA
 adapters implement local ports. Business models and SQL are not shared between services.
 
+## Contract attachment API
+
+- POST /api/contracts/{contractId}/attachments accepts a multipart file field.
+- GET on that collection returns a paginated metadata list; GET /{id} downloads
+  an attachment belonging to the same contract.
+- Files must contain between 1 byte and 5 MiB. Filenames are normalized, and
+  downloads use attachment disposition with a safe generic content type.
+- Contract access is checked before reading or writing storage. Local setup
+  needs its own object-storage configuration; this mirror contains no files
+  from the hosted application's private contracts.
+
 ## Build and test
 
 ```sh

@@ -4,6 +4,7 @@ import java.util.UUID;
 import lt.printerrental.auth.*;
 import lt.printerrental.transport.*;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
@@ -28,6 +29,8 @@ public class HttpContractAccess implements ContractAccess {
 
   public void requireRead(UUID id) {
     var response = client.send(url, "/api/contracts/" + id, "GET", null, null, caller.bearer());
+    if (response.statusCode() == 401)
+      throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Authentication required");
     if (response.statusCode() == 403)
       throw new org.springframework.security.access.AccessDeniedException("Access denied");
     if (response.statusCode() == 404)

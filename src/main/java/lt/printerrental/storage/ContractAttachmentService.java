@@ -2,6 +2,8 @@ package lt.printerrental.storage;
 
 import java.time.Clock;
 import java.util.UUID;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Service;
 @Service
 @ConditionalOnProperty(name = "AWS_ENDPOINT_URL_S3")
 public class ContractAttachmentService {
+  private static final Logger log = LoggerFactory.getLogger(ContractAttachmentService.class);
   private final ObjectStorage storage;
   private final ContractAccess access;
   private final ContractAttachmentRepository attachments;
@@ -46,7 +49,11 @@ public class ContractAttachmentService {
       try {
         storage.delete(attachment.getObjectKey());
       } catch (StorageUnavailableException cleanupError) {
-        // Keep the original DB failure. The key can be recovered from server-side storage logs.
+        // Keep the original DB failure. Log the orphaned key so it can be recovered.
+        log.error(
+            "Failed to delete orphaned attachment object {} after metadata commit failure",
+            attachment.getObjectKey(),
+            cleanupError);
       }
       throw error;
     }

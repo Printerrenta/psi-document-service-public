@@ -56,4 +56,41 @@ class ServiceHttpClientTest {
       server.stop(0);
     }
   }
+
+  @Test
+  void normalizesTrailingSlashesOnServiceUrl() throws Exception {
+    var server = HttpServer.create(new InetSocketAddress("127.0.0.1", 0), 0);
+    server.createContext(
+        "/api/test",
+        exchange -> {
+          var bytes = exchange.getRequestURI().getPath().getBytes();
+          exchange.sendResponseHeaders(200, bytes.length);
+          exchange.getResponseBody().write(bytes);
+          exchange.close();
+        });
+    server.start();
+    try {
+      var expectedBase = "http://127.0.0.1:" + server.getAddress().getPort();
+      var capturedAudience = new String[1];
+      var credentials =
+          new ServiceCredentials() {
+            public String identityToken(String audience) {
+              capturedAudience[0] = audience;
+              return null;
+            }
+
+            public String accessToken() {
+              return null;
+            }
+          };
+      var result =
+          new ServiceHttpClient(credentials)
+              .send(expectedBase + "///", "/api/test", "GET", null, null, null);
+      assertThat(result.statusCode()).isEqualTo(200);
+      assertThat(new String(result.body())).isEqualTo("/api/test");
+      assertThat(capturedAudience[0]).isEqualTo(expectedBase);
+    } finally {
+      server.stop(0);
+    }
+  }
 }

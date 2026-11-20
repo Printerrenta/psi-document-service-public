@@ -52,11 +52,11 @@ class ContractAttachmentServiceTest {
     when(attachments.saveAndFlush(any())).thenAnswer(call -> call.getArgument(0));
     var file =
         new MockMultipartFile(
-            "file", "../../private\\document.html", "text/html", "hello".getBytes());
+            "file", "../../private\\document.pdf", "text/html", "hello".getBytes());
     var result =
         service.upload(
             contractId, new AttachmentUpload(file.getOriginalFilename(), file.getBytes()));
-    assertThat(result.getFilename()).isEqualTo("document.html");
+    assertThat(result.getFilename()).isEqualTo("document.pdf");
     assertThat(result.getContentType()).isEqualTo("application/octet-stream");
     assertThat(result.getObjectKey()).startsWith("contracts/" + contractId + "/");
     verify(storage)

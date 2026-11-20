@@ -1,5 +1,7 @@
 package lt.printerrental.storage;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
@@ -11,6 +13,7 @@ import software.amazon.awssdk.services.s3.model.NoSuchKeyException;
 @Component
 @ConditionalOnProperty(name = "AWS_ENDPOINT_URL_S3")
 public class S3ObjectStorage implements ObjectStorage {
+  private static final Logger log = LoggerFactory.getLogger(S3ObjectStorage.class);
   private final S3Client client;
   private final String bucket;
 
@@ -26,6 +29,7 @@ public class S3ObjectStorage implements ObjectStorage {
           input -> input.bucket(bucket).key(key).contentType(contentType),
           RequestBody.fromBytes(bytes));
     } catch (SdkException error) {
+      log.error("Failed to upload object {} to bucket {}", key, bucket, error);
       throw new StorageUnavailableException(error);
     }
   }
@@ -35,8 +39,10 @@ public class S3ObjectStorage implements ObjectStorage {
     try {
       return client.getObjectAsBytes(input -> input.bucket(bucket).key(key)).asByteArray();
     } catch (NoSuchKeyException error) {
+      log.warn("Object {} not found in bucket {}", key, bucket);
       throw new AttachmentNotFoundException();
     } catch (SdkException error) {
+      log.error("Failed to download object {} from bucket {}", key, bucket, error);
       throw new StorageUnavailableException(error);
     }
   }
@@ -46,6 +52,7 @@ public class S3ObjectStorage implements ObjectStorage {
     try {
       client.deleteObject(input -> input.bucket(bucket).key(key));
     } catch (SdkException error) {
+      log.error("Failed to delete object {} from bucket {}", key, bucket, error);
       throw new StorageUnavailableException(error);
     }
   }

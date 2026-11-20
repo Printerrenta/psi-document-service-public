@@ -161,4 +161,45 @@ class NeonJwtDecoderTest {
     org.mockito.Mockito.when(clock.instant()).thenReturn(now.plusSeconds(11));
     assertThat(decoder.decode(nextToken).getSubject()).isEqualTo("customer-a");
   }
+
+  @Test
+  void fallsBackToCachedKeysOnTransientRefreshFailure() throws Exception {
+    var clock = org.mockito.Mockito.mock(java.time.Clock.class);
+    var now = Instant.now();
+    org.mockito.Mockito.when(clock.instant()).thenReturn(now);
+    var provider =
+        new RemoteJwksSigningKeyProvider(
+            java.net.URI.create("http://127.0.0.1:" + server.getAddress().getPort() + "/jwks"),
+            java.net.http.HttpClient.newHttpClient(),
+            clock);
+    decoder = new NeonJwtDecoder("https://auth.example.test/auth", provider);
+    var jwt = token(claims(), "EdDSA", "key-1", key);
+    assertThat(decoder.decode(jwt).getSubject()).isEqualTo("customer-a");
+    server.stop(0);
+    org.mockito.Mockito.when(clock.instant()).thenReturn(now.plusSeconds(301));
+    assertThat(decoder.decode(jwt).getSubject()).isEqualTo("customer-a");
+  }
+
+  @Test
+  void enforcesAudienceWhenConfigured() throws Exception {
+    var provider =
+        new RemoteJwksSigningKeyProvider(
+            java.net.URI.create("http://127.0.0.1:" + server.getAddress().getPort() + "/jwks"),
+            java.net.http.HttpClient.newHttpClient(),
+            java.time.Clock.systemUTC());
+    var audienceDecoder = new NeonJwtDecoder("https://auth.example.test/auth", provider, "psi-api");
+
+    var missingAud = token(claims(), "EdDSA", "key-1", key);
+    assertThatThrownBy(() -> audienceDecoder.decode(missingAud)).isInstanceOf(JwtException.class);
+
+    var wrongAudClaims = claims();
+    wrongAudClaims.put("aud", "other-api");
+    var wrongAud = token(wrongAudClaims, "EdDSA", "key-1", key);
+    assertThatThrownBy(() -> audienceDecoder.decode(wrongAud)).isInstanceOf(JwtException.class);
+
+    var validAudClaims = claims();
+    validAudClaims.put("aud", "psi-api");
+    var validAud = token(validAudClaims, "EdDSA", "key-1", key);
+    assertThat(audienceDecoder.decode(validAud).getSubject()).isEqualTo("customer-a");
+  }
 }

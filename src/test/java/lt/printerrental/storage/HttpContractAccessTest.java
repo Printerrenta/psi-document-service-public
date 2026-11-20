@@ -1,5 +1,6 @@
 package lt.printerrental.storage;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.*;
 
@@ -9,7 +10,9 @@ import lt.printerrental.auth.CallerToken;
 import lt.printerrental.auth.CurrentUser;
 import lt.printerrental.transport.ServiceHttpClient;
 import org.junit.jupiter.api.Test;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.web.server.ResponseStatusException;
 
 class HttpContractAccessTest {
   final ServiceHttpClient client = mock(ServiceHttpClient.class);
@@ -59,5 +62,20 @@ class HttpContractAccessTest {
     when(client.send("http://rental.test", "/api/contracts/" + id, "GET", null, null, null))
         .thenReturn(response);
     assertThatThrownBy(() -> access.requireRead(id)).isInstanceOf(AccessDeniedException.class);
+  }
+
+  @Test
+  @SuppressWarnings("unchecked")
+  void unauthorizedParentCheckMapsTo401RatherThan503() {
+    var response = (HttpResponse<byte[]>) mock(HttpResponse.class);
+    when(response.statusCode()).thenReturn(401);
+    when(client.send("http://rental.test", "/api/contracts/" + id, "GET", null, null, null))
+        .thenReturn(response);
+    assertThatThrownBy(() -> access.requireRead(id))
+        .isInstanceOf(ResponseStatusException.class)
+        .satisfies(
+            error ->
+                assertThat(((ResponseStatusException) error).getStatusCode())
+                    .isEqualTo(HttpStatus.UNAUTHORIZED));
   }
 }

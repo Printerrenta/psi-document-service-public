@@ -22,8 +22,13 @@ public final class NeonJwtDecoder implements JwtDecoder {
   private final OAuth2TokenValidator<Jwt> validator;
 
   public NeonJwtDecoder(String baseUrl, SigningKeyProvider keys) {
+    this(baseUrl, keys, "");
+  }
+
+  public NeonJwtDecoder(String baseUrl, SigningKeyProvider keys, String expectedAudience) {
     var base = URI.create(baseUrl);
     var issuer = base.getScheme() + "://" + base.getRawAuthority();
+    var requiredAudience = expectedAudience == null ? "" : expectedAudience.strip();
     this.keys = keys;
     validator =
         new DelegatingOAuth2TokenValidator<>(
@@ -35,11 +40,19 @@ public final class NeonJwtDecoder implements JwtDecoder {
                       && jwt.getSubject().length() <= 255
                       && jwt.getExpiresAt() != null
                       && jwt.getIssuedAt() != null;
-              return valid
-                  ? OAuth2TokenValidatorResult.success()
-                  : OAuth2TokenValidatorResult.failure(
-                      new OAuth2Error(
-                          "invalid_token", "Required identity or expiry claim missing", null));
+              if (!valid) {
+                return OAuth2TokenValidatorResult.failure(
+                    new OAuth2Error(
+                        "invalid_token", "Required identity or expiry claim missing", null));
+              }
+              if (!requiredAudience.isEmpty()) {
+                var audience = jwt.getAudience();
+                if (audience == null || !audience.contains(requiredAudience)) {
+                  return OAuth2TokenValidatorResult.failure(
+                      new OAuth2Error("invalid_token", "Token audience is invalid", null));
+                }
+              }
+              return OAuth2TokenValidatorResult.success();
             });
   }
 
